@@ -13,17 +13,14 @@ struct NationwideView: View {
 	
 	@ObservedObject var viewModel: NationwideViewModel
 	
-	@State private var selectedDateRange = 0
-	var dateRangeOptions = ["Last 28 days", "Last 3 months", "All time"]
-	
     var body: some View {
 		NavigationView {
 			ScrollView {
 				VStack {
 					
-					Picker(selection: $selectedDateRange, label: Text("Select date range")) {
-						ForEach(0 ..< dateRangeOptions.count) { index in
-							Text(self.dateRangeOptions[index]).tag(index)
+					Picker(selection: $viewModel.selectedDateRange, label: Text("Select date range")) {
+						ForEach(0 ..< viewModel.dateRangeOptions.count) { index in
+							Text(viewModel.dateRangeOptions[index]).tag(index)
 						}
 					}
 					.pickerStyle(SegmentedPickerStyle())
