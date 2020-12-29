@@ -24,7 +24,8 @@ struct SavedAreasView: View {
 				if savedLocalAuthorityResponses.count > 0 {
 					List {
 						ForEach(savedLocalAuthorityResponses, id: \.postcode) { response in
-							NavigationLink(destination: Text("asd")) {
+							let viewModel = StatisticsViewModel(region: .localAuthority(name: response.localAuthorityName, code: response.localAuthorityCode))
+							NavigationLink(destination: StatisticsView(viewModel: viewModel)) {
 								Text(response.localAuthorityName)
 							}
 						}

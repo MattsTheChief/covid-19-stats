@@ -1,5 +1,5 @@
 //
-//  OverviewStatisticsFetcher.swift
+//  StatisticsFetcher.swift
 //  COVID-19 Stats
 //
 //  Created by Matt Lee on 28/12/2020.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class OverviewStatisticsFetcher {
+class StatisticsFetcher {
 	
 	private let session: URLSession
 	
@@ -19,17 +19,26 @@ class OverviewStatisticsFetcher {
 	
 }
 
-// MARK: - OverviewStatisticsFetchable
-extension OverviewStatisticsFetcher: OverviewStatisticsFetchable {
+// MARK: - StatisticsFetchable
+extension StatisticsFetcher: StatisticsFetchable {
 	
-	func fetchOverviewStatistics() -> AnyPublisher<StatisticsResponse, Error> {
+	func fetchStatistics(region: StatisticsRegion) -> AnyPublisher<StatisticsResponse, Error> {
+		
+		var filtersQueryParameterValue = ""
+		
+		switch region {
+		case .nationwide:
+			filtersQueryParameterValue = "areaType=overview"
+		case .localAuthority(_, let code):
+			filtersQueryParameterValue = "areaCode=" + code
+		}
 		
 		var components = URLComponents()
 		components.scheme = "https"
 		components.host = "api.coronavirus.data.gov.uk"
 		components.path = "/v1/data"
 		components.queryItems = [
-			URLQueryItem(name: "filters", value: "areaType=overview"),
+			URLQueryItem(name: "filters", value: filtersQueryParameterValue),
 			URLQueryItem(name: "structure", value: """
 			{"date":"date","areaName":"areaName","areaCode":"areaCode","newCasesByPublishDate":"newCasesByPublishDate","cumCasesByPublishDate":"cumCasesByPublishDate","newDeaths28DaysByPublishDate":"newDeaths28DaysByPublishDate","cumDeaths28DaysByPublishDate":"cumDeaths28DaysByPublishDate","covidOccupiedMVBeds":"covidOccupiedMVBeds","hospitalCases":"hospitalCases"}
 			""")
@@ -78,6 +87,6 @@ extension OverviewStatisticsFetcher: OverviewStatisticsFetchable {
 	
 }
 
-protocol OverviewStatisticsFetchable {
-	func fetchOverviewStatistics() -> AnyPublisher<StatisticsResponse, Error>
+protocol StatisticsFetchable {
+	func fetchStatistics(region: StatisticsRegion) -> AnyPublisher<StatisticsResponse, Error>
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
 		TabView {
-			NationwideView(viewModel: NationwideViewModel())
+			NationwideStatisticsView()
 				.tabItem {
 					Image(systemName: "chart.pie")
 					Text("Nationwide")

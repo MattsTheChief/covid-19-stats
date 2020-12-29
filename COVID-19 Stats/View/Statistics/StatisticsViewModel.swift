@@ -1,5 +1,5 @@
 //
-//  NationwideViewModel.swift
+//  StatisticsViewModel.swift
 //  COVID-19 Stats
 //
 //  Created by Matt Lee on 28/12/2020.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class NationwideViewModel: ObservableObject {
+class StatisticsViewModel: ObservableObject {
 	
 	private var rawData: [StatisticsData] = []
 	
@@ -21,11 +21,13 @@ class NationwideViewModel: ObservableObject {
 			todaysCasesPretty = todaysCases != nil ? "\(todaysCases!.withCommas())" : "-"
 		}
 	}
+	
 	var todaysDeaths: Int? {
 		didSet {
 			todaysDeathsPretty = todaysDeaths != nil ? "\(todaysDeaths!.withCommas())" : "-"
 		}
 	}
+	
 	var todaysHospitalCases: Int? {
 		didSet {
 			todaysHospitalCasesPretty = todaysHospitalCases != nil ? "\(todaysHospitalCases!.withCommas())" : "-"
@@ -45,6 +47,7 @@ class NationwideViewModel: ObservableObject {
 			weeklyCasesDeltaPretty = weeklyCasesDelta >= 0 ? "+\(weeklyCasesDelta.withCommas())" : "\(weeklyCasesDelta.withCommas())"
 		}
 	}
+	
 	var weeklyDeathsDelta: Int? {
 		didSet {
 			guard let weeklyDeathsDelta = weeklyDeathsDelta else {
@@ -54,6 +57,7 @@ class NationwideViewModel: ObservableObject {
 			weeklyDeathsDeltaPretty = weeklyDeathsDelta >= 0 ? "+\(weeklyDeathsDelta.withCommas())" : "\(weeklyDeathsDelta.withCommas())"
 		}
 	}
+	
 	var weeklyHospitalCasesDelta: Int? {
 		didSet {
 			guard let weeklyHospitalCasesDelta = weeklyHospitalCasesDelta else {
@@ -82,18 +86,40 @@ class NationwideViewModel: ObservableObject {
 	}
 	var dateRangeOptions = ["All time", "Last 3 months", "Last 28 days"]
 	
-	private let overviewStatisticsFetcher: OverviewStatisticsFetchable
+	var title: String {
+		switch region {
+		case .nationwide:
+			return "Nationwide"
+		case .localAuthority(let name, _):
+			return name.capitalized
+		}
+	}
+	
+	var showHospitalCases: Bool {
+		switch region {
+		case .nationwide:
+			return true
+		case .localAuthority(_, _):
+			return false
+		}
+	}
+	
+	private let statisticsFetcher: StatisticsFetchable
 	private var disposables = Set<AnyCancellable>()
 	
+	private let region: StatisticsRegion
+	
 	// MARK: - Init
-	init(overviewStatisticsFetcher: OverviewStatisticsFetchable = OverviewStatisticsFetcher()) {
-		self.overviewStatisticsFetcher = overviewStatisticsFetcher
-		fetchOverviewStatistics()
+	init(statisticsFetcher: StatisticsFetchable = StatisticsFetcher(),
+		 region: StatisticsRegion) {
+		self.statisticsFetcher = statisticsFetcher
+		self.region = region
+		fetchStatistics()
 	}
 	
 	// MARK: - Fetch
-	func fetchOverviewStatistics() {
-		overviewStatisticsFetcher.fetchOverviewStatistics()
+	func fetchStatistics() {
+		statisticsFetcher.fetchStatistics(region: region)
 			.map { response in
 				response.data
 			}
@@ -257,4 +283,9 @@ enum DateRangeOption: Int {
 	case allTime = 0
 	case last3Months = 1
 	case last28Days = 2
+}
+
+enum StatisticsRegion: Equatable {
+	case nationwide
+	case localAuthority(name: String, code: String)
 }

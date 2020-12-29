@@ -1,5 +1,5 @@
 //
-//  TodaysStatsView.swift
+//  TodaysStatisticsView.swift
 //  COVID-19 Stats
 //
 //  Created by Matt Lee on 28/12/2020.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct TodaysStatsView: View {
+struct TodaysStatisticsView: View {
 	
-	@ObservedObject var viewModel: NationwideViewModel
+	@ObservedObject var viewModel: StatisticsViewModel
 	
 	private func deltaLabel(text: String, rawValue: Int?) -> some View {
 		
@@ -39,7 +39,9 @@ struct TodaysStatsView: View {
 						VStack(alignment: .leading, spacing: 24) {
 							Text("Daily Cases")
 							Text("Daily Deaths")
-							Text("Hospital Cases")
+							if viewModel.showHospitalCases {
+								Text("Hospital Cases")
+							}
 						}.font(.headline)
 						Spacer()
 						VStack(spacing: 5) {
@@ -57,12 +59,14 @@ struct TodaysStatsView: View {
 								deltaLabel(text: viewModel.weeklyDeathsDeltaPretty,
 										   rawValue: viewModel.weeklyDeathsDelta)
 							}
-							VStack {
-								Text(viewModel.todaysHospitalCasesPretty)
-									.font(.body)
-									.bold()
-								deltaLabel(text: viewModel.weeklyHospitalCasesDeltaPretty,
-										   rawValue: viewModel.weeklyHospitalCasesDelta)
+							if viewModel.showHospitalCases {
+								VStack {
+									Text(viewModel.todaysHospitalCasesPretty)
+										.font(.body)
+										.bold()
+									deltaLabel(text: viewModel.weeklyHospitalCasesDeltaPretty,
+											   rawValue: viewModel.weeklyHospitalCasesDelta)
+								}
 							}
 						}.font(.headline)
 						Spacer()
@@ -73,8 +77,8 @@ struct TodaysStatsView: View {
     }
 }
 
-struct TodaysStatsView_Previews: PreviewProvider {
+struct TodaysStatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-		TodaysStatsView(viewModel: NationwideViewModel())
+		TodaysStatisticsView(viewModel: StatisticsViewModel(region: .nationwide))
     }
 }
