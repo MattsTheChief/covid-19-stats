@@ -39,34 +39,34 @@ class NationwideViewModel: ObservableObject {
 	var weeklyCasesDelta: Int? {
 		didSet {
 			guard let weeklyCasesDelta = weeklyCasesDelta else {
-				weeklyCasesDeltaPretty = ""
+				weeklyCasesDeltaPretty = "-"
 				return
 			}
-			weeklyCasesDeltaPretty = weeklyCasesDelta >= 0 ? "(+\(weeklyCasesDelta.withCommas()) v last week)" : "(-\(weeklyCasesDelta.withCommas()) v last week)"
+			weeklyCasesDeltaPretty = weeklyCasesDelta >= 0 ? "+\(weeklyCasesDelta.withCommas())" : "-\(weeklyCasesDelta.withCommas())"
 		}
 	}
 	var weeklyDeathsDelta: Int? {
 		didSet {
 			guard let weeklyDeathsDelta = weeklyDeathsDelta else {
-				weeklyDeathsDeltaPretty = ""
+				weeklyDeathsDeltaPretty = "-"
 				return
 			}
-			weeklyDeathsDeltaPretty = weeklyDeathsDelta >= 0 ? "(+\(weeklyDeathsDelta.withCommas()) v last week)" : "(-\(weeklyDeathsDelta.withCommas()) v last week)"
+			weeklyDeathsDeltaPretty = weeklyDeathsDelta >= 0 ? "+\(weeklyDeathsDelta.withCommas())" : "-\(weeklyDeathsDelta.withCommas())"
 		}
 	}
 	var weeklyHospitalCasesDelta: Int? {
 		didSet {
 			guard let weeklyHospitalCasesDelta = weeklyHospitalCasesDelta else {
-				weeklyHospitalCasesDeltaPretty = ""
+				weeklyHospitalCasesDeltaPretty = "-"
 				return
 			}
-			weeklyHospitalCasesDeltaPretty = weeklyHospitalCasesDelta >= 0 ? "(+\(weeklyHospitalCasesDelta.withCommas()) v last week)" : "(-\(weeklyHospitalCasesDelta.withCommas()) v last week)"
+			weeklyHospitalCasesDeltaPretty = weeklyHospitalCasesDelta >= 0 ? "+\(weeklyHospitalCasesDelta.withCommas())" : "-\(weeklyHospitalCasesDelta.withCommas())"
 		}
 	}
 	
-	@Published var weeklyCasesDeltaPretty: String = ""
-	@Published var weeklyDeathsDeltaPretty: String = ""
-	@Published var weeklyHospitalCasesDeltaPretty: String = ""
+	@Published var weeklyCasesDeltaPretty: String = "-"
+	@Published var weeklyDeathsDeltaPretty: String = "-"
+	@Published var weeklyHospitalCasesDeltaPretty: String = "-"
 	
 	@Published var dailyCasesLegend: String = "Loading..."
 	@Published var dailyDeathsLegend: String = "Loading..."

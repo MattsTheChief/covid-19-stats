@@ -11,39 +11,60 @@ struct TodaysStatsView: View {
 	
 	@ObservedObject var viewModel: NationwideViewModel
 	
+	private func deltaLabel(text: String, rawValue: Int?) -> some View {
+		
+		var textColor: Color = .primary
+		
+		if let rawValue = rawValue {
+			textColor = rawValue >= 0 ? .red : .green
+		}
+		
+		return HStack(spacing: 0) {
+			Text("(")
+			Text(text)
+				.foregroundColor(textColor)
+			Text(" v last week)")
+		}
+		.font(.subheadline)
+	}
+	
     var body: some View {
-		VStack(alignment: .leading, spacing: 10) {
+		VStack(alignment: .leading) {
 			Text("Today")
 				.font(.title)
 				.bold()
-			HStack {
-				VStack(alignment: .leading, spacing: 5) {
-					Text("Daily Cases")
-					Text("Daily Deaths")
-					Text("Hospital Cases")
-				}.font(.headline)
-				Spacer()
-				VStack(alignment: .leading, spacing: 5) {
+			GroupBox {
+				VStack(alignment: .leading, spacing: 10) {
 					HStack {
-						Text(viewModel.todaysCasesPretty)
-							.font(.body)
-						Text(viewModel.weeklyCasesDeltaPretty)
-							.font(.subheadline)
+						VStack(alignment: .leading, spacing: 24) {
+							Text("Daily Cases")
+							Text("Daily Deaths")
+							Text("Hospital Cases")
+						}.font(.headline)
+						Spacer()
+						VStack(spacing: 5) {
+							VStack {
+								Text(viewModel.todaysCasesPretty)
+									.font(.body)
+								deltaLabel(text: viewModel.weeklyCasesDeltaPretty,
+										   rawValue: viewModel.weeklyCasesDelta)
+							}
+							VStack {
+								Text(viewModel.todaysDeathsPretty)
+									.font(.body)
+								deltaLabel(text: viewModel.weeklyDeathsDeltaPretty,
+										   rawValue: viewModel.weeklyDeathsDelta)
+							}
+							VStack {
+								Text(viewModel.todaysHospitalCasesPretty)
+									.font(.body)
+								deltaLabel(text: viewModel.weeklyHospitalCasesDeltaPretty,
+										   rawValue: viewModel.weeklyHospitalCasesDelta)
+							}
+						}.font(.headline)
+						Spacer()
 					}
-					HStack {
-						Text(viewModel.todaysDeathsPretty)
-							.font(.body)
-						Text(viewModel.weeklyDeathsDeltaPretty)
-							.font(.subheadline)
-					}
-					HStack {
-						Text(viewModel.todaysHospitalCasesPretty)
-							.font(.body)
-						Text(viewModel.weeklyHospitalCasesDeltaPretty)
-							.font(.subheadline)
-					}
-				}.font(.headline)
-				Spacer()
+				}
 			}
 		}
     }
