@@ -15,10 +15,10 @@ struct ContentView: View {
 					Image(systemName: "chart.pie")
 					Text("Nationwide")
 				}
-			YourAreaView()
+			SavedAreasView(viewModel: SavedAreasViewModel())
 				.tabItem {
 					Image(systemName: "mappin.and.ellipse")
-					Text("Your Area")
+					Text("Local")
 				}
 			SettingsView()
 			  .tabItem {

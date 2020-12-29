@@ -46,18 +46,21 @@ struct TodaysStatsView: View {
 							VStack {
 								Text(viewModel.todaysCasesPretty)
 									.font(.body)
+									.bold()
 								deltaLabel(text: viewModel.weeklyCasesDeltaPretty,
 										   rawValue: viewModel.weeklyCasesDelta)
 							}
 							VStack {
 								Text(viewModel.todaysDeathsPretty)
 									.font(.body)
+									.bold()
 								deltaLabel(text: viewModel.weeklyDeathsDeltaPretty,
 										   rawValue: viewModel.weeklyDeathsDelta)
 							}
 							VStack {
 								Text(viewModel.todaysHospitalCasesPretty)
 									.font(.body)
+									.bold()
 								deltaLabel(text: viewModel.weeklyHospitalCasesDeltaPretty,
 										   rawValue: viewModel.weeklyHospitalCasesDelta)
 							}

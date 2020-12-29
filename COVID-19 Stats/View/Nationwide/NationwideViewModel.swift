@@ -42,7 +42,7 @@ class NationwideViewModel: ObservableObject {
 				weeklyCasesDeltaPretty = "-"
 				return
 			}
-			weeklyCasesDeltaPretty = weeklyCasesDelta >= 0 ? "+\(weeklyCasesDelta.withCommas())" : "-\(weeklyCasesDelta.withCommas())"
+			weeklyCasesDeltaPretty = weeklyCasesDelta >= 0 ? "+\(weeklyCasesDelta.withCommas())" : "\(weeklyCasesDelta.withCommas())"
 		}
 	}
 	var weeklyDeathsDelta: Int? {
@@ -51,7 +51,7 @@ class NationwideViewModel: ObservableObject {
 				weeklyDeathsDeltaPretty = "-"
 				return
 			}
-			weeklyDeathsDeltaPretty = weeklyDeathsDelta >= 0 ? "+\(weeklyDeathsDelta.withCommas())" : "-\(weeklyDeathsDelta.withCommas())"
+			weeklyDeathsDeltaPretty = weeklyDeathsDelta >= 0 ? "+\(weeklyDeathsDelta.withCommas())" : "\(weeklyDeathsDelta.withCommas())"
 		}
 	}
 	var weeklyHospitalCasesDelta: Int? {
@@ -60,7 +60,7 @@ class NationwideViewModel: ObservableObject {
 				weeklyHospitalCasesDeltaPretty = "-"
 				return
 			}
-			weeklyHospitalCasesDeltaPretty = weeklyHospitalCasesDelta >= 0 ? "+\(weeklyHospitalCasesDelta.withCommas())" : "-\(weeklyHospitalCasesDelta.withCommas())"
+			weeklyHospitalCasesDeltaPretty = weeklyHospitalCasesDelta >= 0 ? "+\(weeklyHospitalCasesDelta.withCommas())" : "\(weeklyHospitalCasesDelta.withCommas())"
 		}
 	}
 	
