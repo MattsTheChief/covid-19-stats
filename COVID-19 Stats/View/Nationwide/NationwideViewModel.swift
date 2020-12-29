@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import SwiftUI
 
 class NationwideViewModel: ObservableObject {
 	
@@ -16,6 +15,58 @@ class NationwideViewModel: ObservableObject {
 	@Published var dailyCases: [DailyCaseEntry] = []
 	@Published var dailyDeaths: [DailyDeathEntry] = []
 	@Published var hospitalCases: [HospitalCaseEntry] = []
+	
+	var todaysCases: Int? {
+		didSet {
+			todaysCasesPretty = todaysCases != nil ? "\(todaysCases!.withCommas())" : "-"
+		}
+	}
+	var todaysDeaths: Int? {
+		didSet {
+			todaysDeathsPretty = todaysDeaths != nil ? "\(todaysDeaths!.withCommas())" : "-"
+		}
+	}
+	var todaysHospitalCases: Int? {
+		didSet {
+			todaysHospitalCasesPretty = todaysHospitalCases != nil ? "\(todaysHospitalCases!.withCommas())" : "-"
+		}
+	}
+	
+	@Published var todaysCasesPretty: String = "-"
+	@Published var todaysDeathsPretty: String = "-"
+	@Published var todaysHospitalCasesPretty: String = "-"
+	
+	var weeklyCasesDelta: Int? {
+		didSet {
+			guard let weeklyCasesDelta = weeklyCasesDelta else {
+				weeklyCasesDeltaPretty = ""
+				return
+			}
+			weeklyCasesDeltaPretty = weeklyCasesDelta >= 0 ? "(+\(weeklyCasesDelta.withCommas()) v last week)" : "(-\(weeklyCasesDelta.withCommas()) v last week)"
+		}
+	}
+	var weeklyDeathsDelta: Int? {
+		didSet {
+			guard let weeklyDeathsDelta = weeklyDeathsDelta else {
+				weeklyDeathsDeltaPretty = ""
+				return
+			}
+			weeklyDeathsDeltaPretty = weeklyDeathsDelta >= 0 ? "(+\(weeklyDeathsDelta.withCommas()) v last week)" : "(-\(weeklyDeathsDelta.withCommas()) v last week)"
+		}
+	}
+	var weeklyHospitalCasesDelta: Int? {
+		didSet {
+			guard let weeklyHospitalCasesDelta = weeklyHospitalCasesDelta else {
+				weeklyHospitalCasesDeltaPretty = ""
+				return
+			}
+			weeklyHospitalCasesDeltaPretty = weeklyHospitalCasesDelta >= 0 ? "(+\(weeklyHospitalCasesDelta.withCommas()) v last week)" : "(-\(weeklyHospitalCasesDelta.withCommas()) v last week)"
+		}
+	}
+	
+	@Published var weeklyCasesDeltaPretty: String = ""
+	@Published var weeklyDeathsDeltaPretty: String = ""
+	@Published var weeklyHospitalCasesDeltaPretty: String = ""
 	
 	@Published var dailyCasesLegend: String = "Loading..."
 	@Published var dailyDeathsLegend: String = "Loading..."
@@ -86,10 +137,18 @@ class NationwideViewModel: ObservableObject {
 		dailyCases = dailyCases.filter({ dateRange.contains($0.date) })
 		
 		self.dailyCases = dailyCases
+		
+		if dailyCases.count > 0 {
+			self.todaysCases = dailyCases.last!.numberOfCases
+		}
+		
+		if dailyCases.count > 7 {
+			self.weeklyCasesDelta = todaysCases! - dailyCases[dailyCases.count - 8].numberOfCases
+		}
 	}
 	
 	private func calculateDailyDeaths(dateRange: DateRangeOption  = .allTime) {
-		var dailyDeaths = rawData.reversed().map { DailyDeathEntry(numberOfDeaths: $0.newDeaths28DaysByDeathDate ?? 0,
+		var dailyDeaths = rawData.reversed().map { DailyDeathEntry(numberOfDeaths: $0.newDeaths28DaysByPublishDate ?? 0,
 																   date: $0.date) }
 		dailyDeaths.removeTrailingEmptyEntries(for: \.numberOfDeaths)
 		dailyDeaths.removeLeadingEmptyEntries(for: \.numberOfDeaths)
@@ -99,6 +158,14 @@ class NationwideViewModel: ObservableObject {
 		dailyDeaths = dailyDeaths.filter({ dateRange.contains($0.date) })
 		
 		self.dailyDeaths = dailyDeaths
+		
+		if dailyDeaths.count > 0 {
+			self.todaysDeaths = dailyDeaths.last!.numberOfDeaths
+		}
+		
+		if dailyDeaths.count > 7 {
+			self.weeklyDeathsDelta = todaysDeaths! - dailyDeaths[dailyDeaths.count - 8].numberOfDeaths
+		}
 	}
 	
 	private func calculateHospitalCases(dateRange: DateRangeOption  = .allTime) {
@@ -112,6 +179,14 @@ class NationwideViewModel: ObservableObject {
 		hospitalCases = hospitalCases.filter({ dateRange.contains($0.date) })
 		
 		self.hospitalCases = hospitalCases
+		
+		if hospitalCases.count > 0 {
+			self.todaysHospitalCases = hospitalCases.last!.numberOfHospitalCases
+		}
+		
+		if hospitalCases.count > 7 {
+			self.weeklyHospitalCasesDelta = todaysHospitalCases! - hospitalCases[hospitalCases.count - 8].numberOfHospitalCases
+		}
 	}
 	
 	private func calculateCutOffDate(dateRange: DateRangeOption) -> Date {

@@ -16,7 +16,19 @@ struct NationwideView: View {
     var body: some View {
 		NavigationView {
 			ScrollView {
-				VStack {
+				VStack(alignment: .leading) {
+					
+					Divider()
+					
+					TodaysStatsView(viewModel: viewModel)
+						.padding()
+					
+					Divider()
+					
+					Text("Historic")
+						.font(.title)
+						.bold()
+						.padding([.horizontal, .top])
 					
 					Picker(selection: $viewModel.selectedDateRange, label: Text("Select date range")) {
 						ForEach(0 ..< viewModel.dateRangeOptions.count) { index in

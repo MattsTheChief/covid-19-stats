@@ -22,8 +22,8 @@ struct StatisticsData: Codable {
 	let areaCode: String
 	let newCasesByPublishDate: Int?
 	let cumCasesByPublishDate: Int?
-	let newDeaths28DaysByDeathDate: Int?
-	let cumDeaths28DaysByDeathDate: Int?
+	let newDeaths28DaysByPublishDate: Int?
+	let cumDeaths28DaysByPublishDate: Int?
 	let covidOccupiedMVBeds: Int?
 	let hospitalCases: Int?
 	
@@ -33,8 +33,8 @@ struct StatisticsData: Codable {
 		areaCode = try container.decode(String.self, forKey: .areaCode)
 		newCasesByPublishDate = try? container.decode(Int.self, forKey: .newCasesByPublishDate)
 		cumCasesByPublishDate = try? container.decode(Int.self, forKey: .cumCasesByPublishDate)
-		newDeaths28DaysByDeathDate = try? container.decode(Int.self, forKey: .newDeaths28DaysByDeathDate)
-		cumDeaths28DaysByDeathDate = try? container.decode(Int.self, forKey: .cumDeaths28DaysByDeathDate)
+		newDeaths28DaysByPublishDate = try? container.decode(Int.self, forKey: .newDeaths28DaysByPublishDate)
+		cumDeaths28DaysByPublishDate = try? container.decode(Int.self, forKey: .cumDeaths28DaysByPublishDate)
 		covidOccupiedMVBeds = try? container.decode(Int.self, forKey: .covidOccupiedMVBeds)
 		hospitalCases = try? container.decode(Int.self, forKey: .hospitalCases)
 
