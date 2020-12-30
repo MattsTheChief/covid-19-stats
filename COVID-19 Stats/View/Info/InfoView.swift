@@ -27,7 +27,7 @@ struct InfoView: View {
 						Text("Privacy Policy")
 					}
 					
-					NavigationLink(destination: Text("Acknowledgements")) {
+					NavigationLink(destination: Text("Icon made by surang(https://www.flaticon.com/authors/surang) from www.flaticon.com")) {
 						Text("Acknowledgements")
 					}
 					
