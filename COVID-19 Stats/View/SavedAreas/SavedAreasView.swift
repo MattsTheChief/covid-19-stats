@@ -30,7 +30,8 @@ struct SavedAreasView: View {
 							}
 						}
 						.onDelete(perform: delete)
-					}.listStyle(InsetGroupedListStyle())
+					}
+					.listStyle(InsetGroupedListStyle())
 				} else {
 					Text("No saved areas")
 				}
