@@ -56,6 +56,9 @@ struct StatisticsView: View {
 			}
 		}
 		.navigationTitle(viewModel.title)
+		.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+			viewModel.fetchStatistics()
+		}
     }
 }
 

@@ -12,7 +12,7 @@ struct ContentView: View {
 		TabView {
 			NationwideStatisticsView()
 				.tabItem {
-					Image(systemName: "chart.pie")
+					Image(systemName: "flag")
 					Text("Nationwide")
 				}
 			SavedAreasView(viewModel: SavedAreasViewModel())
@@ -20,10 +20,10 @@ struct ContentView: View {
 					Image(systemName: "mappin.and.ellipse")
 					Text("Local")
 				}
-			SettingsView()
+			InfoView(viewModel: InfoViewModel())
 			  .tabItem {
-				 Image(systemName: "gearshape")
-				 Text("Settings")
+				 Image(systemName: "info.circle")
+				 Text("Info")
 			   }
 		}
     }
