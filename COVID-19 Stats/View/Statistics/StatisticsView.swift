@@ -13,9 +13,30 @@ struct StatisticsView: View {
 	
 	@ObservedObject var viewModel: StatisticsViewModel
 	
+	private let chartStyle = ChartStyle(
+		backgroundColor: Color.white,
+		accentColor: Color.accentColor,
+		secondGradientColor: Color.accentColor,
+		textColor: Color.black,
+		legendTextColor: Color.gray,
+		dropShadowColor: Color.gray
+	)
+	
+	private let darkChartStyle = ChartStyle(
+		backgroundColor: Color.black,
+		accentColor: Color.accentColor,
+		secondGradientColor: Color.accentColor,
+		textColor: Color.white,
+		legendTextColor: Color.white,
+		dropShadowColor: Color.gray
+	)
+	
     var body: some View {
-		ScrollView {
-			VStack(alignment: .leading) {
+		
+		chartStyle.darkModeStyle = darkChartStyle
+		
+		return ScrollView {
+			LazyVStack(alignment: .leading) {
 				
 				TodaysStatisticsView(viewModel: viewModel)
 					.padding()
@@ -25,7 +46,7 @@ struct StatisticsView: View {
 					.bold()
 					.padding([.horizontal, .top])
 				
-				Picker(selection: $viewModel.selectedDateRange, label: Text("Select date range")) {
+				Picker(selection: $viewModel.selectedDateRangeIndex, label: Text("Select date range")) {
 					ForEach(0 ..< viewModel.dateRangeOptions.count) { index in
 						Text(viewModel.dateRangeOptions[index]).tag(index)
 					}
@@ -35,21 +56,24 @@ struct StatisticsView: View {
 
 				LineView(data: viewModel.dailyCases.map { Double($0.numberOfCases) },
 						 title: "Daily Cases",
-						 legend: viewModel.dailyCasesLegend)
-					.frame(height: 320)
+						 legend: viewModel.dailyCasesLegend,
+						 style: chartStyle)
+					.frame(height: 350)
 					.padding([.bottom, .horizontal])
 				
 				LineView(data: viewModel.dailyDeaths.map { Double($0.numberOfDeaths) },
 						 title: "Daily Deaths",
-						 legend: viewModel.dailyDeathsLegend)
-					.frame(height: 320)
+						 legend: viewModel.dailyDeathsLegend,
+						 style: chartStyle)
+					.frame(height: 350)
 					.padding()
 
 				if viewModel.showHospitalCases {
 					LineView(data: viewModel.hospitalCases.map { Double($0.numberOfHospitalCases) },
 							 title: "Hospital Cases",
-							 legend: viewModel.hospitalCasesLegend)
-						.frame(height: 320)
+							 legend: viewModel.hospitalCasesLegend,
+							 style: chartStyle)
+						.frame(height: 340)
 						.padding()
 				}
 				

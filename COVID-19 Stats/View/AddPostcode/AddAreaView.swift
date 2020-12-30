@@ -67,7 +67,7 @@ struct AddAreaView: View {
 								 dismissButton: .default(Text("OK")))
 				default:
 					return Alert(title: Text("Unable to save area"),
-								 message: Text("This area cannot be saved right now. Please try again later."),
+								 message: Text("Please check the postcode entered is correct."),
 								 dismissButton: .default(Text("OK")))
 				}
 			}

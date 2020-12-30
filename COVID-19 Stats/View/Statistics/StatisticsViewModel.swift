@@ -76,20 +76,20 @@ class StatisticsViewModel: ObservableObject {
 	@Published var dailyDeathsLegend: String = "Loading..."
 	@Published var hospitalCasesLegend: String = "Loading..."
 	
-	@Published var selectedDateRange = 0 {
+	@Published var selectedDateRangeIndex = 0 {
 		didSet {
-			guard let dateRangeOption = DateRangeOption(rawValue: selectedDateRange) else {
-				fatalError("Unsupport date range option selected")
-			}
-			updateForDateRange(dateRangeOption)
+			updateForSelectedDateRange()
 		}
 	}
-	var dateRangeOptions = ["All time", "Last 3 months", "Last 28 days"]
+	var selectedDateRange: DateRangeOption {
+		return DateRangeOption(rawValue: selectedDateRangeIndex) ?? .last28Days
+	}
+	var dateRangeOptions = ["Last 28 days", "Last 3 months", "All time"]
 	
 	var title: String {
 		switch region {
 		case .nationwide:
-			return "Nationwide"
+			return "United Kingdom"
 		case .localAuthority(let name, _):
 			return name.capitalized
 		}
@@ -152,13 +152,13 @@ class StatisticsViewModel: ObservableObject {
 			.store(in: &disposables)
 	}
 	
-	private func calculateDailyCases(dateRange: DateRangeOption  = .allTime) {
+	private func calculateDailyCases() {
 		var dailyCases = rawData.reversed().map { DailyCaseEntry(numberOfCases: $0.newCasesByPublishDate ?? 0,
 																 date: $0.date) }
 		dailyCases.removeTrailingEmptyEntries(for: \.numberOfCases)
 		dailyCases.removeLeadingEmptyEntries(for: \.numberOfCases)
 		
-		let cutOffDate = calculateCutOffDate(dateRange: dateRange)
+		let cutOffDate = calculateCutOffDate(dateRange: selectedDateRange)
 		let dateRange = cutOffDate...Date()
 		dailyCases = dailyCases.filter({ dateRange.contains($0.date) })
 		
@@ -173,13 +173,13 @@ class StatisticsViewModel: ObservableObject {
 		}
 	}
 	
-	private func calculateDailyDeaths(dateRange: DateRangeOption  = .allTime) {
+	private func calculateDailyDeaths() {
 		var dailyDeaths = rawData.reversed().map { DailyDeathEntry(numberOfDeaths: $0.newDeaths28DaysByPublishDate ?? 0,
 																   date: $0.date) }
 		dailyDeaths.removeTrailingEmptyEntries(for: \.numberOfDeaths)
 		dailyDeaths.removeLeadingEmptyEntries(for: \.numberOfDeaths)
 		
-		let cutOffDate = calculateCutOffDate(dateRange: dateRange)
+		let cutOffDate = calculateCutOffDate(dateRange: selectedDateRange)
 		let dateRange = cutOffDate...Date()
 		dailyDeaths = dailyDeaths.filter({ dateRange.contains($0.date) })
 		
@@ -194,13 +194,13 @@ class StatisticsViewModel: ObservableObject {
 		}
 	}
 	
-	private func calculateHospitalCases(dateRange: DateRangeOption  = .allTime) {
+	private func calculateHospitalCases() {
 		var hospitalCases = rawData.reversed().map { HospitalCaseEntry(numberOfHospitalCases: $0.hospitalCases ?? 0,
 																	   date: $0.date) }
 		hospitalCases.removeTrailingEmptyEntries(for: \.numberOfHospitalCases)
 		hospitalCases.removeLeadingEmptyEntries(for: \.numberOfHospitalCases)
 		
-		let cutOffDate = calculateCutOffDate(dateRange: dateRange)
+		let cutOffDate = calculateCutOffDate(dateRange: selectedDateRange)
 		let dateRange = cutOffDate...Date()
 		hospitalCases = hospitalCases.filter({ dateRange.contains($0.date) })
 		
@@ -254,10 +254,10 @@ class StatisticsViewModel: ObservableObject {
 		return firstDateString + " - " + lastDateString
 	}
 	
-	private func updateForDateRange(_ dateRange: DateRangeOption) {
-		calculateDailyCases(dateRange: dateRange)
-		calculateDailyDeaths(dateRange: dateRange)
-		calculateHospitalCases(dateRange: dateRange)
+	private func updateForSelectedDateRange() {
+		calculateDailyCases()
+		calculateDailyDeaths()
+		calculateHospitalCases()
 		updateLegends()
 	}
 	
@@ -280,9 +280,9 @@ struct HospitalCaseEntry {
 }
 
 enum DateRangeOption: Int {
-	case allTime = 0
+	case last28Days = 0
 	case last3Months = 1
-	case last28Days = 2
+	case allTime = 2
 }
 
 enum StatisticsRegion: Equatable {
