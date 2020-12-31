@@ -25,7 +25,7 @@ struct TodaysStatisticsView: View {
 				.foregroundColor(textColor)
 			Text(" v last week)")
 		}
-		.font(.subheadline)
+		.font(.body)
 	}
 	
     var body: some View {
@@ -36,7 +36,7 @@ struct TodaysStatisticsView: View {
 			GroupBox {
 				VStack(alignment: .leading, spacing: 10) {
 					HStack {
-						VStack(alignment: .leading, spacing: 24) {
+						VStack(alignment: .leading, spacing: 40) {
 							Text("Daily Cases")
 							Text("Daily Deaths")
 							if viewModel.showHospitalCases {
@@ -47,14 +47,14 @@ struct TodaysStatisticsView: View {
 						VStack(spacing: 5) {
 							VStack {
 								Text(viewModel.todaysCasesPretty)
-									.font(.body)
+									.font(.largeTitle)
 									.bold()
 								deltaLabel(text: viewModel.weeklyCasesDeltaPretty,
 										   rawValue: viewModel.weeklyCasesDelta)
 							}
 							VStack {
 								Text(viewModel.todaysDeathsPretty)
-									.font(.body)
+									.font(.largeTitle)
 									.bold()
 								deltaLabel(text: viewModel.weeklyDeathsDeltaPretty,
 										   rawValue: viewModel.weeklyDeathsDelta)
@@ -62,7 +62,7 @@ struct TodaysStatisticsView: View {
 							if viewModel.showHospitalCases {
 								VStack {
 									Text(viewModel.todaysHospitalCasesPretty)
-										.font(.body)
+										.font(.largeTitle)
 										.bold()
 									deltaLabel(text: viewModel.weeklyHospitalCasesDeltaPretty,
 											   rawValue: viewModel.weeklyHospitalCasesDelta)

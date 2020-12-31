@@ -57,14 +57,16 @@ struct StatisticsView: View {
 				LineView(data: viewModel.dailyCases.map { Double($0.numberOfCases) },
 						 title: "Daily Cases",
 						 legend: viewModel.dailyCasesLegend,
-						 style: chartStyle)
+						 style: chartStyle,
+						 valueSpecifier: "%.0f")
 					.frame(height: 350)
 					.padding([.bottom, .horizontal])
 				
 				LineView(data: viewModel.dailyDeaths.map { Double($0.numberOfDeaths) },
 						 title: "Daily Deaths",
 						 legend: viewModel.dailyDeathsLegend,
-						 style: chartStyle)
+						 style: chartStyle,
+						 valueSpecifier: "%.0f")
 					.frame(height: 350)
 					.padding()
 
@@ -72,8 +74,9 @@ struct StatisticsView: View {
 					LineView(data: viewModel.hospitalCases.map { Double($0.numberOfHospitalCases) },
 							 title: "Hospital Cases",
 							 legend: viewModel.hospitalCasesLegend,
-							 style: chartStyle)
-						.frame(height: 340)
+							 style: chartStyle,
+							 valueSpecifier: "%.0f")
+						.frame(height: 350)
 						.padding()
 				}
 				

@@ -27,13 +27,13 @@
 		C9C7AA3E259A0A6D00E13A0E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C7AA3D259A0A6D00E13A0E /* Preview Assets.xcassets */; };
 		C9C7AA4C259A0DAF00E13A0E /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA4B259A0DAF00E13A0E /* StatisticsView.swift */; };
 		C9C7AA4F259A0DBB00E13A0E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA4E259A0DBB00E13A0E /* InfoView.swift */; };
-		C9C7AA54259A0F6200E13A0E /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C9C7AA53259A0F6200E13A0E /* SwiftUICharts */; };
 		C9C7AA58259A121900E13A0E /* StatisticsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA57259A121900E13A0E /* StatisticsFetcher.swift */; };
 		C9C7AA5E259A14E800E13A0E /* StatisticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA5D259A14E800E13A0E /* StatisticsResponse.swift */; };
 		C9C7AA63259A163500E13A0E /* StatisticsErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA62259A163500E13A0E /* StatisticsErrorResponse.swift */; };
 		C9C7AA6A259A198500E13A0E /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA69259A198500E13A0E /* HTTPError.swift */; };
 		C9C7AA6E259A1A7A00E13A0E /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA6D259A1A7A00E13A0E /* StatisticsViewModel.swift */; };
 		C9C7AA7B259A31C000E13A0E /* SavedAreasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA7A259A31C000E13A0E /* SavedAreasView.swift */; };
+		C9F4B654259CC64700414625 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C9F4B653259CC64700414625 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +65,7 @@
 		C9C7AA69259A198500E13A0E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		C9C7AA6D259A1A7A00E13A0E /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		C9C7AA7A259A31C000E13A0E /* SavedAreasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAreasView.swift; sourceTree = "<group>"; };
+		C9F4B64B259CC59800414625 /* ChartView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ChartView; path = ../../ChartView; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9C7AA54259A0F6200E13A0E /* SwiftUICharts in Frameworks */,
+				C9F4B654259CC64700414625 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +139,7 @@
 			children = (
 				C9C7AA35259A0A6C00E13A0E /* COVID-19 Stats */,
 				C9C7AA34259A0A6C00E13A0E /* Products */,
+				C9F4B64D259CC62400414625 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +154,7 @@
 		C9C7AA35259A0A6C00E13A0E /* COVID-19 Stats */ = {
 			isa = PBXGroup;
 			children = (
+				C9F4B64B259CC59800414625 /* ChartView */,
 				C938CFE5259A35FD00FBCE19 /* Extensions */,
 				C9C7AA6C259A1A5900E13A0E /* View */,
 				C9C7AA5C259A14CF00E13A0E /* Model */,
@@ -241,6 +244,13 @@
 			path = SavedAreas;
 			sourceTree = "<group>";
 		};
+		C9F4B64D259CC62400414625 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -258,7 +268,7 @@
 			);
 			name = "COVID-19 Stats";
 			packageProductDependencies = (
-				C9C7AA53259A0F6200E13A0E /* SwiftUICharts */,
+				C9F4B653259CC64700414625 /* SwiftUICharts */,
 			);
 			productName = "COVID-19 Stats";
 			productReference = C9C7AA33259A0A6C00E13A0E /* COVID-19 Stats.app */;
@@ -288,7 +298,7 @@
 			);
 			mainGroup = C9C7AA2A259A0A6C00E13A0E;
 			packageReferences = (
-				C9C7AA52259A0F6200E13A0E /* XCRemoteSwiftPackageReference "ChartView" */,
+				C9F4B652259CC64700414625 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = C9C7AA34259A0A6C00E13A0E /* Products */;
 			projectDirPath = "";
@@ -534,9 +544,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C9C7AA52259A0F6200E13A0E /* XCRemoteSwiftPackageReference "ChartView" */ = {
+		C9F4B652259CC64700414625 /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
+			repositoryURL = "https://github.com/MattsTheChief/ChartView";
 			requirement = {
 				kind = exactVersion;
 				version = 1.5.4;
@@ -545,9 +555,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C9C7AA53259A0F6200E13A0E /* SwiftUICharts */ = {
+		C9F4B653259CC64700414625 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C9C7AA52259A0F6200E13A0E /* XCRemoteSwiftPackageReference "ChartView" */;
+			package = C9F4B652259CC64700414625 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */

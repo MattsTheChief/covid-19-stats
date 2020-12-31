@@ -26,7 +26,7 @@ struct AddAreaView: View {
 			Form {
 
 				Section(header: Text("POSTCODE"),
-						footer: Text("Your postcode is used to find your local authority and never leaves your device")) {
+						footer: Text("Your postcode is used to find your local authority and is not stored outside of your device")) {
 					
 					TextField("Enter postcode", text: $viewModel.postcode)
 					

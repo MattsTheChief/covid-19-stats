@@ -251,7 +251,7 @@ class StatisticsViewModel: ObservableObject {
 		let firstDateString = dateFormatter.string(from: startDate)
 		let lastDateString = dateFormatter.string(from: lastDate)
 		
-		return firstDateString + " - " + lastDateString
+		return "GOV.UK - " + firstDateString + " to " + lastDateString
 	}
 	
 	private func updateForSelectedDateRange() {
