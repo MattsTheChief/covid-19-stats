@@ -11,10 +11,10 @@ struct ContentView: View {
 	
     var body: some View {
 		TabView {
-			NationwideStatisticsView()
+			NationalStatisticsView()
 				.tabItem {
 					Image(systemName: "flag")
-					Text("Nationwide")
+					Text("National")
 				}
 			LocalAreasView(viewModel: LocalAreasViewModel())
 				.tabItem {

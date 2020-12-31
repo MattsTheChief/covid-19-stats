@@ -79,6 +79,6 @@ struct TodaysStatisticsView: View {
 
 struct TodaysStatisticsView_Previews: PreviewProvider {
     static var previews: some View {
-		TodaysStatisticsView(viewModel: StatisticsViewModel(region: .nationwide))
+		TodaysStatisticsView(viewModel: StatisticsViewModel(region: .national))
     }
 }

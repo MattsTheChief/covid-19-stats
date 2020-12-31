@@ -88,7 +88,7 @@ class StatisticsViewModel: ObservableObject {
 	
 	var title: String {
 		switch region {
-		case .nationwide:
+		case .national:
 			return "United Kingdom"
 		case .localAuthority(let name, _):
 			return name.capitalized
@@ -97,7 +97,7 @@ class StatisticsViewModel: ObservableObject {
 	
 	var showHospitalCases: Bool {
 		switch region {
-		case .nationwide:
+		case .national:
 			return true
 		case .localAuthority(_, _):
 			return false
@@ -294,6 +294,6 @@ enum DateRangeOption: Int {
 }
 
 enum StatisticsRegion: Equatable {
-	case nationwide
+	case national
 	case localAuthority(name: String, code: String)
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InfoView: View {
 	
+	@Environment(\.openURL) var openURL
+	
 	@ObservedObject var viewModel: InfoViewModel
 	
     var body: some View {
@@ -16,12 +18,20 @@ struct InfoView: View {
 			List {
 				Section {
 					
-					NavigationLink(destination: TermsAndConditionsView()) {
-						Text("Terms & Conditions")
+					Button(action: {
+						openURL(viewModel.privacyPolicyURL)
+					}){
+						HStack {
+							Text("Privacy Policy")
+								.foregroundColor(Color(.label))
+							Spacer()
+							Image(systemName: "square.and.arrow.up")
+								.foregroundColor(Color(.systemGray))
+						}
 					}
 					
-					NavigationLink(destination: PrivacyPolicyView()) {
-						Text("Privacy Policy")
+					NavigationLink(destination: TermsAndConditionsView()) {
+						Text("Terms & Conditions")
 					}
 					
 					NavigationLink(destination: AcknowledgementsView()) {
@@ -32,8 +42,11 @@ struct InfoView: View {
 						Text("Contact Us")
 					}
 					
+				}
+				
+				Section {
 					Text(viewModel.versionPretty)
-					
+						.foregroundColor(Color.gray)
 				}
 			}
 			.listStyle(InsetGroupedListStyle())

@@ -27,7 +27,7 @@ extension StatisticsFetcher: StatisticsFetchable {
 		var filtersQueryParameterValue = ""
 		
 		switch region {
-		case .nationwide:
+		case .national:
 			filtersQueryParameterValue = "areaType=overview"
 		case .localAuthority(_, let code):
 			filtersQueryParameterValue = "areaCode=" + code

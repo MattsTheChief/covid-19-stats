@@ -91,7 +91,7 @@ struct StatisticsView: View {
 
 struct NationwideView_Previews: PreviewProvider {
     static var previews: some View {
-		let viewModel = StatisticsViewModel(region: .nationwide)
+		let viewModel = StatisticsViewModel(region: .national)
 		StatisticsView(viewModel: viewModel)
     }
 }
