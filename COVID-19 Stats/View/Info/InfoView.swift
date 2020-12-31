@@ -15,23 +15,21 @@ struct InfoView: View {
 		NavigationView {
 			List {
 				Section {
-					NavigationLink(destination: Text("Data Sources")) {
-						Text("Data Sources")
-					}
 					
-					NavigationLink(destination: Text("Terms & Condtions")) {
-						Text("Terms & Condtions")
+					NavigationLink(destination: Text("Terms & Conditions")) {
+						Text("Terms & Conditions")
 					}
 					
 					NavigationLink(destination: Text("Privacy Policy")) {
 						Text("Privacy Policy")
 					}
 					
-					NavigationLink(destination: Text("Icon made by surang(https://www.flaticon.com/authors/surang) from www.flaticon.com")) {
+					NavigationLink(destination: AcknowledgementsView()) {
 						Text("Acknowledgements")
 					}
 					
 					Text(viewModel.versionPretty)
+					
 				}
 			}
 			.listStyle(InsetGroupedListStyle())

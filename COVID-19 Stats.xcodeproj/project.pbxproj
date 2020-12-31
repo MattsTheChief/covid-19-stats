@@ -34,6 +34,7 @@
 		C9C7AA6E259A1A7A00E13A0E /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA6D259A1A7A00E13A0E /* StatisticsViewModel.swift */; };
 		C9C7AA7B259A31C000E13A0E /* LocalAreasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7AA7A259A31C000E13A0E /* LocalAreasView.swift */; };
 		C9F4B654259CC64700414625 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C9F4B653259CC64700414625 /* SwiftUICharts */; };
+		C9F4B65F259E0B9900414625 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4B65E259E0B9900414625 /* AcknowledgementsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		C9C7AA6D259A1A7A00E13A0E /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		C9C7AA7A259A31C000E13A0E /* LocalAreasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAreasView.swift; sourceTree = "<group>"; };
 		C9F4B64B259CC59800414625 /* ChartView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ChartView; path = ../../ChartView; sourceTree = "<group>"; };
+		C9F4B65E259E0B9900414625 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 		C9C7AA49259A0D3700E13A0E /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				C9F4B65D259E0B8900414625 /* Acknowledgements */,
 				C9C7AA4E259A0DBB00E13A0E /* InfoView.swift */,
 				C938D035259BFBA600FBCE19 /* InfoViewModel.swift */,
 			);
@@ -229,7 +232,6 @@
 			children = (
 				C9C7AA48259A0CEF00E13A0E /* Statistics */,
 				C9C7AA79259A31A500E13A0E /* LocalAreas */,
-				C938D011259B7D2200FBCE19 /* AddArea */,
 				C9C7AA49259A0D3700E13A0E /* Info */,
 			);
 			path = View;
@@ -238,6 +240,7 @@
 		C9C7AA79259A31A500E13A0E /* LocalAreas */ = {
 			isa = PBXGroup;
 			children = (
+				C938D011259B7D2200FBCE19 /* AddArea */,
 				C9C7AA7A259A31C000E13A0E /* LocalAreasView.swift */,
 				C938D026259BD98D00FBCE19 /* LocalAreasViewModel.swift */,
 			);
@@ -249,6 +252,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9F4B65D259E0B8900414625 /* Acknowledgements */ = {
+			isa = PBXGroup;
+			children = (
+				C9F4B65E259E0B9900414625 /* AcknowledgementsView.swift */,
+			);
+			path = Acknowledgements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +360,7 @@
 				C938D022259BCC4900FBCE19 /* PostcodeValidator.swift in Sources */,
 				C9C7AA58259A121900E13A0E /* StatisticsFetcher.swift in Sources */,
 				C9C7AA6E259A1A7A00E13A0E /* StatisticsViewModel.swift in Sources */,
+				C9F4B65F259E0B9900414625 /* AcknowledgementsView.swift in Sources */,
 				C938CFEB259A3BBD00FBCE19 /* Array+Empty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
