@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C938CFE7259A361700FBCE19 /* DateFormatter+yyyyMMdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938CFE6259A361700FBCE19 /* DateFormatter+yyyyMMdd.swift */; };
+		C938CFE7259A361700FBCE19 /* DateFormatter+Pretty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938CFE6259A361700FBCE19 /* DateFormatter+Pretty.swift */; };
 		C938CFEB259A3BBD00FBCE19 /* Array+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938CFEA259A3BBD00FBCE19 /* Array+Empty.swift */; };
 		C938CFEF259AA16600FBCE19 /* TodaysStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938CFEE259AA16600FBCE19 /* TodaysStatisticsView.swift */; };
 		C938CFF9259AB92400FBCE19 /* Int+Commas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C938CFF8259AB92400FBCE19 /* Int+Commas.swift */; };
@@ -37,7 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C938CFE6259A361700FBCE19 /* DateFormatter+yyyyMMdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+yyyyMMdd.swift"; sourceTree = "<group>"; };
+		C938CFE6259A361700FBCE19 /* DateFormatter+Pretty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Pretty.swift"; sourceTree = "<group>"; };
 		C938CFEA259A3BBD00FBCE19 /* Array+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Empty.swift"; sourceTree = "<group>"; };
 		C938CFEE259AA16600FBCE19 /* TodaysStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysStatisticsView.swift; sourceTree = "<group>"; };
 		C938CFF8259AB92400FBCE19 /* Int+Commas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Commas.swift"; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		C938CFE5259A35FD00FBCE19 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C938CFE6259A361700FBCE19 /* DateFormatter+yyyyMMdd.swift */,
+				C938CFE6259A361700FBCE19 /* DateFormatter+Pretty.swift */,
 				C938CFEA259A3BBD00FBCE19 /* Array+Empty.swift */,
 				C938CFF8259AB92400FBCE19 /* Int+Commas.swift */,
 			);
@@ -336,7 +336,7 @@
 				C9C7AA37259A0A6C00E13A0E /* COVID_19_StatsApp.swift in Sources */,
 				C938D00E259B708C00FBCE19 /* UserDefaultsManager.swift in Sources */,
 				C9C7AA5E259A14E800E13A0E /* StatisticsResponse.swift in Sources */,
-				C938CFE7259A361700FBCE19 /* DateFormatter+yyyyMMdd.swift in Sources */,
+				C938CFE7259A361700FBCE19 /* DateFormatter+Pretty.swift in Sources */,
 				C938CFFF259B5E5900FBCE19 /* LocalAuthorityResponse.swift in Sources */,
 				C938CFF9259AB92400FBCE19 /* Int+Commas.swift in Sources */,
 				C9C7AA7B259A31C000E13A0E /* SavedAreasView.swift in Sources */,

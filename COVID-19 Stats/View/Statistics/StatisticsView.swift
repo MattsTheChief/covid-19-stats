@@ -54,7 +54,7 @@ struct StatisticsView: View {
 				.pickerStyle(SegmentedPickerStyle())
 				.padding(.horizontal)
 
-				LineView(data: viewModel.dailyCases.map { Double($0.numberOfCases) },
+				LineView(data: viewModel.dailyCases.map { ($0.prettyDate, Double($0.numberOfCases)) },
 						 title: "Daily Cases",
 						 legend: viewModel.dailyCasesLegend,
 						 style: chartStyle,
@@ -62,7 +62,7 @@ struct StatisticsView: View {
 					.frame(height: 350)
 					.padding([.bottom, .horizontal])
 				
-				LineView(data: viewModel.dailyDeaths.map { Double($0.numberOfDeaths) },
+				LineView(data: viewModel.dailyDeaths.map { ($0.prettyDate, Double($0.numberOfDeaths)) },
 						 title: "Daily Deaths",
 						 legend: viewModel.dailyDeathsLegend,
 						 style: chartStyle,
@@ -71,7 +71,7 @@ struct StatisticsView: View {
 					.padding()
 
 				if viewModel.showHospitalCases {
-					LineView(data: viewModel.hospitalCases.map { Double($0.numberOfHospitalCases) },
+					LineView(data: viewModel.hospitalCases.map { ($0.prettyDate, Double($0.numberOfHospitalCases)) },
 							 title: "Hospital Cases",
 							 legend: viewModel.hospitalCasesLegend,
 							 style: chartStyle,

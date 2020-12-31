@@ -109,6 +109,8 @@ class StatisticsViewModel: ObservableObject {
 	
 	private let region: StatisticsRegion
 	
+	private let prettyDateFormatter: DateFormatter = DateFormatter.dMyy
+	
 	// MARK: - Init
 	init(statisticsFetcher: StatisticsFetchable = StatisticsFetcher(),
 		 region: StatisticsRegion) {
@@ -154,7 +156,8 @@ class StatisticsViewModel: ObservableObject {
 	
 	private func calculateDailyCases() {
 		var dailyCases = rawData.reversed().map { DailyCaseEntry(numberOfCases: $0.newCasesByPublishDate ?? 0,
-																 date: $0.date) }
+																 date: $0.date,
+																 prettyDate: prettyDateFormatter.string(from: $0.date)) }
 		dailyCases.removeTrailingEmptyEntries(for: \.numberOfCases)
 		dailyCases.removeLeadingEmptyEntries(for: \.numberOfCases)
 		
@@ -175,7 +178,8 @@ class StatisticsViewModel: ObservableObject {
 	
 	private func calculateDailyDeaths() {
 		var dailyDeaths = rawData.reversed().map { DailyDeathEntry(numberOfDeaths: $0.newDeaths28DaysByPublishDate ?? 0,
-																   date: $0.date) }
+																   date: $0.date,
+																   prettyDate: prettyDateFormatter.string(from: $0.date)) }
 		dailyDeaths.removeTrailingEmptyEntries(for: \.numberOfDeaths)
 		dailyDeaths.removeLeadingEmptyEntries(for: \.numberOfDeaths)
 		
@@ -196,7 +200,8 @@ class StatisticsViewModel: ObservableObject {
 	
 	private func calculateHospitalCases() {
 		var hospitalCases = rawData.reversed().map { HospitalCaseEntry(numberOfHospitalCases: $0.hospitalCases ?? 0,
-																	   date: $0.date) }
+																	   date: $0.date,
+																	   prettyDate: prettyDateFormatter.string(from: $0.date)) }
 		hospitalCases.removeTrailingEmptyEntries(for: \.numberOfHospitalCases)
 		hospitalCases.removeLeadingEmptyEntries(for: \.numberOfHospitalCases)
 		
@@ -237,7 +242,7 @@ class StatisticsViewModel: ObservableObject {
 		dailyDeathsLegend = legend(startDate: dailyDeaths.first?.date,
 								   lastDate: dailyDeaths.last?.date)
 		hospitalCasesLegend = legend(startDate: hospitalCases.first?.date,
-										lastDate: hospitalCases.last?.date)
+									 lastDate: hospitalCases.last?.date)
 	}
 	
 	private func legend(startDate: Date?, lastDate: Date?) -> String {
@@ -267,16 +272,19 @@ class StatisticsViewModel: ObservableObject {
 struct DailyCaseEntry {
 	let numberOfCases: Int
 	let date: Date
+	let prettyDate: String
 }
 
 struct DailyDeathEntry {
 	let numberOfDeaths: Int
 	let date: Date
+	let prettyDate: String
 }
 
 struct HospitalCaseEntry {
 	let numberOfHospitalCases: Int
 	let date: Date
+	let prettyDate: String
 }
 
 enum DateRangeOption: Int {
