@@ -31,7 +31,7 @@ struct AddLocalAreaView: View {
 					TextField("Enter postcode", text: $viewModel.postcode)
 					
 					if viewModel.state == .invalidPostcode {
-						Text("Please enter a valid postcode")
+						Text("Please enter a valid UK postcode")
 							.foregroundColor(.red)
 					}
 				}

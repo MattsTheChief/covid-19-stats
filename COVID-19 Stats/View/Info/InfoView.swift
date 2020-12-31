@@ -28,6 +28,10 @@ struct InfoView: View {
 						Text("Acknowledgements")
 					}
 					
+					NavigationLink(destination: ContactUsView()) {
+						Text("Contact Us")
+					}
+					
 					Text(viewModel.versionPretty)
 					
 				}
