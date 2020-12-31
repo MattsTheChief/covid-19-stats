@@ -1,5 +1,5 @@
 //
-//  SavedAreasViewModel.swift
+//  LocalAreasViewModel.swift
 //  COVID-19 Stats
 //
 //  Created by Matt Lee on 29/12/2020.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class SavedAreasViewModel: ObservableObject {
+class LocalAreasViewModel: ObservableObject {
 	
 	private var userDefaultsManager: UserDefaultsManagerProtocol
 	
@@ -19,7 +19,6 @@ class SavedAreasViewModel: ObservableObject {
 	
 	// MARK: - Local Storage
 	func deleteResponses(indexSet: IndexSet) {
-		
 		do {
 			var savedResponses = try JSONDecoder().decode([LocalAuthorityResponse].self, from: userDefaultsManager.savedLocalAuthorityResponsesData)
 			savedResponses.remove(atOffsets: indexSet)

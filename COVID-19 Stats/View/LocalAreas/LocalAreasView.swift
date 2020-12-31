@@ -1,5 +1,5 @@
 //
-//  SavedAreasView.swift
+//  LocalAreasView.swift
 //  COVID-19 Stats
 //
 //  Created by Matt Lee on 28/12/2020.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct SavedAreasView: View {
+struct LocalAreasView: View {
 	
-	@ObservedObject var viewModel: SavedAreasViewModel
+	@ObservedObject var viewModel: LocalAreasViewModel
 	
 	@AppStorage(UserDefaultsManager.savedLocalAuthorityResponsesDataKey)
 	var savedLocalAuthorityResponsesData: Data = UserDefaultsManager().savedLocalAuthorityResponsesData
@@ -33,11 +33,11 @@ struct SavedAreasView: View {
 					}
 					.listStyle(InsetGroupedListStyle())
 				} else {
-					Text("No saved areas")
+					Text("Tap \"+\" to add a Local Area")
 				}
 			}
-			.navigationTitle("Saved Areas")
-			.navigationBarItems(leading: EditButton(), trailing:
+			.navigationTitle("Local Areas")
+			.navigationBarItems(leading: EditButton().opacity(savedLocalAuthorityResponses.count > 0 ? 1.0 : 0.0), trailing:
 				Button(action: {
 					showingAddPostcodeScreen = true
 				}) {
@@ -45,8 +45,8 @@ struct SavedAreasView: View {
 				}
 			)
 		}.sheet(isPresented: $showingAddPostcodeScreen) {
-			AddAreaView(viewModel: AddAreaViewModel(),
-						isBeingPresented: $showingAddPostcodeScreen)
+			AddLocalAreaView(viewModel: AddLocalAreaViewModel(),
+							 isBeingPresented: $showingAddPostcodeScreen)
 		}
     }
 	
@@ -66,8 +66,8 @@ struct SavedAreasView: View {
 	}
 }
 
-struct SavedAreasView_Previews: PreviewProvider {
+struct LocalAreasView_Previews: PreviewProvider {
     static var previews: some View {
-		SavedAreasView(viewModel: SavedAreasViewModel())
+		LocalAreasView(viewModel: LocalAreasViewModel())
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AddAreaView.swift
+//  AddLocalAreaView.swift
 //  COVID-19 Stats
 //
 //  Created by Matt Lee on 29/12/2020.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct AddAreaView: View {
+struct AddLocalAreaView: View {
 	
-	@ObservedObject var viewModel: AddAreaViewModel
+	@ObservedObject var viewModel: AddLocalAreaViewModel
 	@Binding var isBeingPresented: Bool
 	
 	// MARK: - Views
@@ -51,7 +51,7 @@ struct AddAreaView: View {
 				}
 				
 			}
-			.navigationTitle("Add Area")
+			.navigationTitle("Add Local Area")
 			.navigationBarItems(trailing:
 				Button(action: {
 					isBeingPresented = false
@@ -76,10 +76,10 @@ struct AddAreaView: View {
 	
 }
 
-struct AddPostcodeView_Previews: PreviewProvider {
+struct AddLocalAreaView_Previews: PreviewProvider {
     static var previews: some View {
-		let viewModel = AddAreaViewModel()
+		let viewModel = AddLocalAreaViewModel()
 		viewModel.state = .loading
-		return AddAreaView(viewModel: viewModel, isBeingPresented: .constant(true))
+		return AddLocalAreaView(viewModel: viewModel, isBeingPresented: .constant(true))
     }
 }

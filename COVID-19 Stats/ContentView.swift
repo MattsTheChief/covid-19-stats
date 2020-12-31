@@ -16,16 +16,16 @@ struct ContentView: View {
 					Image(systemName: "flag")
 					Text("Nationwide")
 				}
-			SavedAreasView(viewModel: SavedAreasViewModel())
+			LocalAreasView(viewModel: LocalAreasViewModel())
 				.tabItem {
 					Image(systemName: "mappin.and.ellipse")
 					Text("Local")
 				}
 			InfoView(viewModel: InfoViewModel())
-			  .tabItem {
-				 Image(systemName: "info.circle")
-				 Text("Info")
-			   }
+				.tabItem {
+					Image(systemName: "info.circle")
+					Text("Info")
+				}
 		}
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AddAreaViewModel.swift
+//  AddLocalAreaViewModel.swift
 //  COVID-19 Stats
 //
 //  Created by Matt Lee on 29/12/2020.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class AddAreaViewModel: ObservableObject {
+class AddLocalAreaViewModel: ObservableObject {
 	
 	private let localAuthorityFetcher: LocalAuthorityFetchable
 	private var userDefaultsManager: UserDefaultsManagerProtocol
@@ -113,7 +113,7 @@ class AddAreaViewModel: ObservableObject {
 	
 }
 
-extension AddAreaViewModel {
+extension AddLocalAreaViewModel {
 	enum State: Equatable {
 		case idle
 		case loading
