@@ -36,6 +36,8 @@
 		C9F4B654259CC64700414625 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C9F4B653259CC64700414625 /* SwiftUICharts */; };
 		C9F4B65F259E0B9900414625 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4B65E259E0B9900414625 /* AcknowledgementsView.swift */; };
 		C9F4B666259E190400414625 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4B665259E190400414625 /* ContactUsView.swift */; };
+		C9F4B670259E1D0000414625 /* TermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4B66F259E1D0000414625 /* TermsAndConditionsView.swift */; };
+		C9F4B677259E1E2400414625 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4B676259E1E2400414625 /* PrivacyPolicyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		C9F4B64B259CC59800414625 /* ChartView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ChartView; path = ../../ChartView; sourceTree = "<group>"; };
 		C9F4B65E259E0B9900414625 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 		C9F4B665259E190400414625 /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		C9F4B66F259E1D0000414625 /* TermsAndConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsView.swift; sourceTree = "<group>"; };
+		C9F4B676259E1E2400414625 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +199,8 @@
 		C9C7AA49259A0D3700E13A0E /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				C9F4B675259E1E1600414625 /* PrivacyPolicy */,
+				C9F4B672259E1D0500414625 /* TermsAndConditions */,
 				C9F4B664259E18F000414625 /* ContactUs */,
 				C9F4B65D259E0B8900414625 /* Acknowledgements */,
 				C9C7AA4E259A0DBB00E13A0E /* InfoView.swift */,
@@ -271,6 +277,22 @@
 				C9F4B665259E190400414625 /* ContactUsView.swift */,
 			);
 			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		C9F4B672259E1D0500414625 /* TermsAndConditions */ = {
+			isa = PBXGroup;
+			children = (
+				C9F4B66F259E1D0000414625 /* TermsAndConditionsView.swift */,
+			);
+			path = TermsAndConditions;
+			sourceTree = "<group>";
+		};
+		C9F4B675259E1E1600414625 /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				C9F4B676259E1E2400414625 /* PrivacyPolicyView.swift */,
+			);
+			path = PrivacyPolicy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,9 +381,11 @@
 				C9C7AA37259A0A6C00E13A0E /* COVID_19_StatsApp.swift in Sources */,
 				C938D00E259B708C00FBCE19 /* UserDefaultsManager.swift in Sources */,
 				C9C7AA5E259A14E800E13A0E /* StatisticsResponse.swift in Sources */,
+				C9F4B670259E1D0000414625 /* TermsAndConditionsView.swift in Sources */,
 				C938CFE7259A361700FBCE19 /* DateFormatter+Pretty.swift in Sources */,
 				C938CFFF259B5E5900FBCE19 /* LocalAuthorityResponse.swift in Sources */,
 				C938CFF9259AB92400FBCE19 /* Int+Commas.swift in Sources */,
+				C9F4B677259E1E2400414625 /* PrivacyPolicyView.swift in Sources */,
 				C9C7AA7B259A31C000E13A0E /* LocalAreasView.swift in Sources */,
 				C938D036259BFBA600FBCE19 /* InfoViewModel.swift in Sources */,
 				C9C7AA6A259A198500E13A0E /* HTTPError.swift in Sources */,

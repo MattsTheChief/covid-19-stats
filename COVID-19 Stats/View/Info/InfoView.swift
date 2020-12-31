@@ -16,11 +16,11 @@ struct InfoView: View {
 			List {
 				Section {
 					
-					NavigationLink(destination: Text("Terms & Conditions")) {
+					NavigationLink(destination: TermsAndConditionsView()) {
 						Text("Terms & Conditions")
 					}
 					
-					NavigationLink(destination: Text("Privacy Policy")) {
+					NavigationLink(destination: PrivacyPolicyView()) {
 						Text("Privacy Policy")
 					}
 					
