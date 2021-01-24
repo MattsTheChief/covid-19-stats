@@ -2,9 +2,9 @@
 
 COVID-19 Stats is a native iOS app designed to help people stay up-to-date with national and local COVID-19 statistics in the UK using data from GOV.UK.
 
-Apple do not allow COVID-19 related apps on the App Store from independent developers, so I'd like to share it with the developer community just in case it can add any value to those following the pandemic in the UK through these unprecendented times.
+Apple do not allow COVID-19 related apps from independent developers on the App Store, so I'd like to share it with the developer community just in case it can add any value to those following the pandemic in the UK through these unprecedented times.
 
-To manage expectations, I built this over a few days during the 2020/2021 winter break, so don't be expectating test suites and the cleanest of code. It follows an MVVM architecture with largely testable code, but is by no means perfect.
+To manage expectations, I built this over a few days during the 2020/2021 winter break, so please excuse the lack of unit tests and general production unreadiness. It follows an MVVM architecture with largely testable code, but is by no means perfect.
 
 <img src= "./Screenshots/National_Dark.png" width="195px" height="422px"><img src= "./Screenshots/Local_Light.png" width="195px" height="422px">
 
