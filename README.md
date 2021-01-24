@@ -6,8 +6,7 @@ Apple do not allow COVID-19 related apps on the App Store from independent devel
 
 To manage expectations, I built this over a few days during the 2020/2021 winter break, so don't be expectating test suites and the cleanest of code. It follows an MVVM architecture with largely testable code, but is by no means perfect.
 
-<img src= "./Screenshots/National_Dark.png" style="width:195px;height:422;">
-<img src= "./Screenshots/Local_Light.png" style="width:195px;height:422;">
+<img src= "./Screenshots/National_Dark.png" width="195px" height="422px"><img src= "./Screenshots/Local_Light.png" width="195px" height="422px">
 
 ## Features
 
@@ -22,7 +21,7 @@ To manage expectations, I built this over a few days during the 2020/2021 winter
 
 ## Installation
 
-Simply open `COVID-19 Stats.xcodeproj` in Xcode and run (<kbd>⌘+R</kbd>) the app! 
+Simply open `COVID-19 Stats.xcodeproj` in Xcode and run (<kbd>⌘R</kbd>) the app! 
 
 This project has a single dependency pulled in using Swift Package Manager that Xcode should retrieve for you. If this fails, with the project open in Xcode, go to `File > Swift Packages > Update to Latest Package Versions`.
 
