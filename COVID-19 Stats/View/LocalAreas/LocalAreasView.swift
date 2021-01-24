@@ -19,6 +19,8 @@ struct LocalAreasView: View {
 	// MARK: - Views
     var body: some View {
 		
+		let savedLocalAuthorityResponses = viewModel.savedLocalAuthorityResponses(data: savedLocalAuthorityResponsesData)
+		
 		return NavigationView {
 			Group {
 				if savedLocalAuthorityResponses.count > 0 {
@@ -29,7 +31,7 @@ struct LocalAreasView: View {
 								Text(response.localAuthorityName)
 							}
 						}
-						.onDelete(perform: delete)
+						.onDelete(perform: viewModel.deleteResponses)
 					}
 					.listStyle(InsetGroupedListStyle())
 				} else {
@@ -49,21 +51,6 @@ struct LocalAreasView: View {
 							 isBeingPresented: $showingAddPostcodeScreen)
 		}
     }
-	
-	func delete(at offsets: IndexSet) {
-		viewModel.deleteResponses(indexSet: offsets)
-	}
-	
-	// MARK: - Saved Local Authorities
-	private var savedLocalAuthorityResponses: [LocalAuthorityResponse] {
-		get {
-			do {
-				return try JSONDecoder().decode([LocalAuthorityResponse].self, from: savedLocalAuthorityResponsesData)
-			} catch {
-				return []
-			}
-		}
-	}
 }
 
 struct LocalAreasView_Previews: PreviewProvider {

@@ -49,35 +49,12 @@ extension StatisticsFetcher: StatisticsFetchable {
 		return session.dataTaskPublisher(for: request)
 			
 			.tryMap({ (data, response) -> Data in
-				
-				#if DEBUG
-				print("--- DEBUG NETWORK LOGS ---")
-				print("--- URL: \(response.url?.absoluteString ?? "unknown")")
-				#endif
-				
 				if let response = response as? HTTPURLResponse,
 					(200..<300).contains(response.statusCode) == false {
-					
-					#if DEBUG
-					print("--- Error - HTTP status code: \(response.statusCode)")
-					#endif
-					
 					throw HTTPError(integerLiteral: response.statusCode)
-					
 				} else if let errorResponse = try? JSONDecoder().decode(StatisticsErrorResponse.self, from: data) {
-					
-					#if DEBUG
-					print("--- Error - \(errorResponse)")
-					#endif
-					
 					throw errorResponse
-					
 				}
-				
-				#if DEBUG
-				print("--- Response body: " + (String(data: data, encoding: .utf8) ?? "unknown"))
-				#endif
-
 				return data
 			})
 			.decode(type: StatisticsResponse.self, decoder: JSONDecoder())

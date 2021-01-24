@@ -15,14 +15,8 @@ struct AddLocalAreaView: View {
 	// MARK: - Views
     var body: some View {
 		
-		switch viewModel.state {
-		case .success:
-			isBeingPresented = false
-		default:
-			break
-		}
-		
-		return NavigationView {
+		NavigationView {
+			
 			Form {
 
 				Section(header: Text("POSTCODE"),
@@ -70,6 +64,14 @@ struct AddLocalAreaView: View {
 								 message: Text("Please check the postcode entered is correct."),
 								 dismissButton: .default(Text("OK")))
 				}
+			}
+		}
+		.onChange(of: viewModel.state) { value in
+			switch value {
+			case .success:
+				isBeingPresented = false
+			default:
+				break
 			}
 		}
     }

@@ -8,40 +8,16 @@
 import SwiftUI
 
 struct InfoView: View {
-	
-	@Environment(\.openURL) var openURL
-	
+		
 	@ObservedObject var viewModel: InfoViewModel
 	
     var body: some View {
 		NavigationView {
 			List {
 				Section {
-					
-					Button(action: {
-						openURL(viewModel.privacyPolicyURL)
-					}){
-						HStack {
-							Text("Privacy Policy")
-								.foregroundColor(Color(.label))
-							Spacer()
-							Image(systemName: "square.and.arrow.up")
-								.foregroundColor(Color(.systemGray))
-						}
-					}
-					
-					NavigationLink(destination: TermsAndConditionsView()) {
-						Text("Terms & Conditions")
-					}
-					
 					NavigationLink(destination: AcknowledgementsView()) {
 						Text("Acknowledgements")
 					}
-					
-					NavigationLink(destination: ContactUsView()) {
-						Text("Contact Us")
-					}
-					
 				}
 				
 				Section {

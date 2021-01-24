@@ -27,4 +27,12 @@ class LocalAreasViewModel: ObservableObject {
 		} catch { }
 		
 	}
+	
+	func savedLocalAuthorityResponses(data: Data) -> [LocalAuthorityResponse] {
+		do {
+			return try JSONDecoder().decode([LocalAuthorityResponse].self, from: data)
+		} catch {
+			return []
+		}
+	}
 }

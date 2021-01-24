@@ -8,9 +8,7 @@
 import Foundation
 
 class InfoViewModel: ObservableObject {
-	
-	let privacyPolicyURL: URL = URL(string: "https://covid-19-stats-uk.flycricket.io/privacy.html")!
-	
+		
 	let versionPretty: String = {
 		guard let rawVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
 			return ""
