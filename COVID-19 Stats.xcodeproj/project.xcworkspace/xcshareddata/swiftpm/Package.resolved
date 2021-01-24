@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftUICharts",
+        "repositoryURL": "https://github.com/MattsTheChief/ChartView",
+        "state": {
+          "branch": null,
+          "revision": "35f79fa1ef02ecb14a272acfb2fd4c5559c6c1b9",
+          "version": "1.5.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -66,7 +66,6 @@
 		C9C7AA69259A198500E13A0E /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		C9C7AA6D259A1A7A00E13A0E /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		C9C7AA7A259A31C000E13A0E /* LocalAreasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAreasView.swift; sourceTree = "<group>"; };
-		C9F4B64B259CC59800414625 /* ChartView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ChartView; path = ../../ChartView; sourceTree = "<group>"; };
 		C9F4B65E259E0B9900414625 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +155,6 @@
 		C9C7AA35259A0A6C00E13A0E /* COVID-19 Stats */ = {
 			isa = PBXGroup;
 			children = (
-				C9F4B64B259CC59800414625 /* ChartView */,
 				C938CFE5259A35FD00FBCE19 /* Extensions */,
 				C9C7AA6C259A1A5900E13A0E /* View */,
 				C9C7AA5C259A14CF00E13A0E /* Model */,
@@ -489,11 +487,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development: Matthew Lee (YBT3ZYM8XC)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"COVID-19 Stats/Preview Content\"";
-				DEVELOPMENT_TEAM = AWR6NL89G2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "COVID-19 Stats/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -503,7 +501,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattlee.covid19stats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "COVID-19 Stats - Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -514,11 +512,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Matthew Lee (AWR6NL89G2)";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"COVID-19 Stats/Preview Content\"";
-				DEVELOPMENT_TEAM = AWR6NL89G2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "COVID-19 Stats/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -528,7 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattlee.covid19stats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "COVID-19 Stats - Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -563,7 +561,7 @@
 			repositoryURL = "https://github.com/MattsTheChief/ChartView";
 			requirement = {
 				kind = exactVersion;
-				version = 1.5.4;
+				version = 1.5.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
